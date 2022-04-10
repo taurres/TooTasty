@@ -1,0 +1,30 @@
+{
+  "name": "TooTasty",
+  "version": "1.0.0",
+  "description": "Restaurant ratings reviews application",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [
+    "rating",
+    "review",
+    "restaurant",
+    "full stack",
+    "MERN"
+  ],
+  "author": "Anqi Luo, Jiaxi Wen, Jingyu Luo, Kexin Qiu",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.9"
+  },
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "nodemon": "^2.0.15"
+  }
+}
