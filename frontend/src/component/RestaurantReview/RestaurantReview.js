@@ -18,10 +18,6 @@ const RestaurantReview = () => {
 
                         <div id="myTabContent" className="tab-content">
                             <div className="tab-pane fade active show" id="Reviews">
-                                {/*<ReviewItems />*/}
-
-                                     {/*<div className="review-item clearfix">*/}
-                                     {/*    <div className="review-item-submitted">*/}
                                 <div className="review-item clearfix">
                                     <div className="grid-image-left">
                                         <LetterAvatars name={'Bob Smith'}/>

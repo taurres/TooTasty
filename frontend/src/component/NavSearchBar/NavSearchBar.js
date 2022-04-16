@@ -1,14 +1,14 @@
 import React from "react";
 
-const Navbar = ({login}) => {
+const NavSearchBar = ({login}) => {
 
 
 
     return(
         <>
-            <section>
-                <div className="container padding-right ">
-                    <div className="row">
+            {/*<section>*/}
+            {/*    <div className="container padding-right ">*/}
+            {/*        <div className="row">*/}
                         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                             <div className="container-fluid">
                                 <p className="navbar-brand">TooTasty</p>
@@ -35,10 +35,10 @@ const Navbar = ({login}) => {
                                 </div>
                             </div>
                         </nav>
-                    </div>
-                </div>
-            </section>
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</section>*/}
         </>
     );
 }
-export default Navbar;
+export default NavSearchBar;

@@ -3,12 +3,11 @@ import RestaurantReview from "../RestaurantReview/RestaurantReview";
 import React from "react";
 
 
-const RestaurantDetails = () => {
-
+const RestaurantDetail = () => {
 
     return(
         <>
-            <section>
+            <section className="header height-auto">
             <div className="container ps-0 pe-0">
                 <div className="row">
                     <div className="position-relative">
@@ -47,30 +46,5 @@ const RestaurantDetails = () => {
     );
 }
 
-export default RestaurantDetails;
+export default RestaurantDetail;
 
-//
-// <div className="product-meta position-absolute wd-restaurant-info-pos">
-//     <h1 className="wd-restaurant-title ">Restaurant Name</h1>
-//     <ul className="list-inline">
-//         <li className="list-inline-item">
-//             <i className="fa-solid fa-star"></i>
-//             <i className="fa-solid fa-star"></i>
-//             <i className="fa-solid fa-star"></i>
-//             <i className="fa-solid fa-star-half-stroke"></i>
-//         </li>
-//         <li className="list-inline-item"><i className="fa fa-user-o"></i> 123 Reviews
-//         </li>
-//
-//     </ul>
-//
-//     <ul className="list-inline font-orange-bolder">
-//         <li className="list-inline-item"><i className="fa-solid fa-calendar-days"></i> Open <span>11:00 AM - 10:00 PM</span></li>
-//         <li className="list-inline-item ps-2"><i className="fa-solid fa-utensils"></i> Asian Chinese </li>
-//         <li className="list-inline-item ps-2"> price $$</li>
-//     </ul>
-//     <ul className="list-inline font-orange-bolder">
-//         <li className="list-inline-item"><i className="fa-solid fa-location-arrow"></i> Location
-//         </li>
-//     </ul>
-// </div>
