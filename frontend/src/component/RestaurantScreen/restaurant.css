@@ -138,3 +138,7 @@
     color: rgb(110,118,125);
 }
 
+.position-up{
+    position: relative;
+    bottom:7px;
+}
