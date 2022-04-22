@@ -1,8 +1,32 @@
-import * as React from 'react';
-import {Link} from "react-router-dom";
+
+import Confirm from './confirm';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Alert from "@mui/material/Alert";
 
 
-const EditProfileItem = () => {
+const EditProfileItem = ({profile}) => {
+
+    let [firstname, setFirstname] = useState(profile.firstname);
+    let [lastname, setLastname] = useState(profile.lastname);
+    let [bio, setProfileBio] = useState(profile.bio);
+    let [location, setProfileLocation] = useState(profile.location);
+    let [dateOfBirth, setProfileDateOfBirth] = useState(profile.dateOfBirth);
+
+    const dispatch = useDispatch();
+
+    const editProfileClickHandler = (profile) => {
+        dispatch({
+            type: 'edit-profile',
+            firstname: profile.firstname,
+            lastname: profile.lastname,
+            bio: profile.bio,
+            location: profile.location,
+            dateOfBirth: profile.dateOfBirth,
+        });
+    }
+
+
     return (
         <>
 
@@ -11,12 +35,12 @@ const EditProfileItem = () => {
                 <label htmlFor="name" className="form-label mx-3 font-white"> First Name</label>
                 <input
                     required
-                    id="name"
+                    id="firstname"
                     type="text"
                     className="form-control"
-                    placeholder="name"
-                    //value={name}
-                    //onChange={(event) => setProfileName(event.target.value)}
+                    placeholder={profile.firstname}
+                    value={firstname}
+                    onChange={(event) => setFirstname(event.target.value)}
                 />
             </div>
 
@@ -24,12 +48,12 @@ const EditProfileItem = () => {
                 <label htmlFor="name" className="form-label mx-3 font-white"> Last Name</label>
                 <input
                     required
-                    id="name"
+                    id="lastname"
                     type="text"
                     className="form-control"
-                    placeholder="name"
-                    //value={name}
-                    //onChange={(event) => setProfileName(event.target.value)}
+                    placeholder={profile.lastname}
+                    value={lastname}
+                    onChange={(event) => setLastname(event.target.value)}
                 />
             </div>
 
@@ -38,9 +62,9 @@ const EditProfileItem = () => {
                 <input
                     type="text"
                     className="form-control"
-                    placeholder="bio"
-                    //value={bio}
-                    //onChange={(event) => setProfileBio(event.target.value)}
+                    placeholder={profile.bio}
+                    value={bio}
+                    onChange={(event) => setProfileBio(event.target.value)}
                 />
             </div>
 
@@ -49,9 +73,9 @@ const EditProfileItem = () => {
                 <input
                     type="text"
                     className="form-control "
-                    placeholder="location"
-                    // value={location}
-                    //onChange={(event) => setProfileLocation(event.target.value)}
+                    placeholder={profile.location}
+                    value={location}
+                    onChange={(event) => setProfileLocation(event.target.value)}
                 />
             </div>
 
@@ -60,18 +84,19 @@ const EditProfileItem = () => {
                 <input
                     type="text"
                     className="form-control"
-                    placeholder="birth"
-                    value=""
-                    // onChange={(event) => setProfileDateOfBirth(event.target.value)}
+                    placeholder={profile.dateOfBirth}
+                    value={dateOfBirth}
+                    onChange={(event) => setProfileDateOfBirth(event.target.value)}
                 />
             </div>
         </form>
 
             <div className="position-relative btn-pos align-self-center my-2 pt-2">
-                <Link to="/profile">
-                    <button //onClick={()=>editProfileClickHandler(profile)}
+
+                    <button onClick={()=>editProfileClickHandler(profile)}
+                        onSubmit={()=>Confirm()}
                         className="btn btn-primary">Save</button>
-                </Link>
+
             </div>
 
     </>

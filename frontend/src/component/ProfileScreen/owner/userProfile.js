@@ -1,9 +1,9 @@
-import Navbar from '../Navbar/navbar';
+import Navbar from '../../Navbar/navbar';
 import React from "react";
 import UserCard from "./userCard";
 import UserDetail from "./userDetail";
 import UserReviews from "./userReviews";
-import FavouriteRes from "../HomeScreen/favouriteRes";
+import FavouriteRes from "../../HomeScreen/favouriteRes";
 
 const UserProfile = () => {
   return(

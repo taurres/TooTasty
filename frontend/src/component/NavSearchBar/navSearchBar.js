@@ -7,7 +7,7 @@ const NavSearchBar = ({login}) => {
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div className="container-fluid">
-                    <Link to="/home">
+                    <Link to="/tootasty/home">
                         <p className="navbar-brand">TooTasty</p>
                     </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"

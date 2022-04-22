@@ -1,10 +1,15 @@
 import Navbar from "../Navbar/navbar";
-import React from "react";
-import UserCard from "../ProfileScreen/userCard";
+import React, {useState} from "react";
+import UserCardEditProfile from "./userCardEditProfile";
 import EditProfileItem from "./editProfileItem";
 import "./editProfile.css";
+import {useSelector} from "react-redux";
 
 const EditProfile = () => {
+
+    const profile = useSelector((state) => state.profile);
+
+
     return(
         <>
             <div>
@@ -12,10 +17,10 @@ const EditProfile = () => {
                 <section className="header height-auto">
                     <div className="row">
                         <div className="col-4">
-                            <UserCard />
+                            <UserCardEditProfile profile={profile}/>
                         </div>
                         <div className="col-8">
-                            <EditProfileItem />
+                            <EditProfileItem profile={profile}/>
                         </div>
                     </div>
                 </section>

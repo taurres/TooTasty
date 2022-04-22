@@ -1,0 +1,11 @@
+{
+  "firstname": "Alice",
+  "lastname": "Annunziato",
+  "name" : "Alice Annunziato",
+  "bio": "I love eatting!",
+  "location": "Boston, MA",
+  "dateOfBirth": "7/7/1968",
+
+  "followingCount": "312",
+  "followersCount": "180"
+}

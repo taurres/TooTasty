@@ -1,4 +1,4 @@
-import RecentReviewedRes from "../HomeScreen/recentReviewedRes";
+import RecentReviewedRes from "../../HomeScreen/recentReviewedRes";
 
 const UserReviews = () => {
   return(

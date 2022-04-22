@@ -10,22 +10,25 @@ import {Provider} from "react-redux";
 import {combineReducers, createStore} from "redux";
 
 
-const reducer = combineReducers({
-    reviews:reviewReducer,
-    restaurants:restaurantReducer,
-});
-const store = createStore(reducer);
+//
+// const reducer = combineReducers({
+//     reviews:reviewReducer,
+//     restaurants:restaurantReducer,
+//
+// });
+// const store = createStore(reducer);
 
 
 const RestaurantScreen = () => {
 
     return (
-        <Provider store={store}>
-
+        // <Provider store={store}>
+        <>
             <NavSearchBar />
             <RestaurantDetail />
             <RestaurantReview />
-        </Provider>
+        </>
+        // </Provider>
     );
  }
 export default RestaurantScreen;

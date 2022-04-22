@@ -18,7 +18,7 @@ const Navbar = () => {
                                 {/*<a className="nav-link active" href="#">Home*/}
                                 {/*    <span className="visually-hidden">(current)</span>*/}
                                 {/*</a>*/}
-                                <Link className="nav-link active" to="/home">Home
+                                <Link className="nav-link active" to="/tootasty/home">Home
                                     <span className="visually-hidden">(current)</span>
                                 </Link>
                             </li>
