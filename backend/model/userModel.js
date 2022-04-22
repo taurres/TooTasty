@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
 import { USER_ROLE_ADMIN, USER_ROLE_CUSTOMER, USER_ROLE_OWNER } from '../constant/userConstant.js'
+import arrayUniquePlugin from 'mongoose-unique-array'
 
 const userSchema = mongoose.Schema(
   {
@@ -34,11 +35,12 @@ const userSchema = mongoose.Schema(
     },
     likedRestaurant: [
       {
-        name: {type: String, required: true},
-        image_url: {type: String, required: true},
+        name: { type: String, required: true },
+        image_url: { type: String, required: true },
         restaurant: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
+          unique: true,
           ref: 'Restaurant',
         },
       }
@@ -67,6 +69,9 @@ userSchema.pre('save', async function (next) {
   const salt = await bcrypt.genSalt(10)
   this.password = await bcrypt.hash(this.password, salt)
 })
+
+// avoid array duplicate
+userSchema.plugin(arrayUniquePlugin)
 
 const User = mongoose.model('User', userSchema)
 
