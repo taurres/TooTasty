@@ -1,8 +1,9 @@
-import HomepageCardElement from "./homepageCardElement";
-import {Link} from "react-router-dom";
+import reviews from '../datafornow/reviews.json'
+// import {Link} from "react-router-dom";
 import ReviewElement from "./reviewElement";
 
 const RecentReviewedRes = () => {
+
   return(
       <>
           <div className="mt-5 m-3 flex">
@@ -11,39 +12,9 @@ const RecentReviewedRes = () => {
 
           <div className="flex p-2">
               <ul className="list-group">
-                  <Link to="#">
-                      <li className="text-white list-group-item d-flex justify-content-between align-items-center">
-                          <div className="homepage-list-child">
-                              <img src="../img/top-liked-1.jpg" alt=""/>
-                              <div className="text p-2">
-                                  <h2>NAME</h2>
-                              </div>
-                          </div>
-                          <span><p ><i className="fa-solid fa-heart"/> 100 likes</p></span>
-                      </li>
-                  </Link>
-                  <Link to="#">
-                      <li className="text-white list-group-item d-flex justify-content-between align-items-center">
-                          <div className="homepage-list-child">
-                              <img src="..//img/top-liked-2.jpg" alt=""/>
-                              <div className="text p-2">
-                                  <h2>NAME</h2>
-                              </div>
-                          </div>
-                          <span ><p><i className="fa-solid fa-heart"/> 100 likes</p></span>
-                      </li>
-                  </Link>
-                  <Link to="#">
-                      <li className="text-white list-group-item d-flex justify-content-between align-items-center">
-                          <div className="homepage-list-child">
-                              <img src="../img/top-liked-3.jpg" alt=""/>
-                              <div className="text p-2">
-                                  <h2>NAME</h2>
-                              </div>
-                          </div>
-                          <span ><p><i className="fa-solid fa-heart"/> 100 likes</p></span>
-                      </li>
-                  </Link>
+                  {reviews.map && reviews.map(review => {
+                      return(<ReviewElement review={review}/>);
+                  })}
               </ul>
           </div>
       </>

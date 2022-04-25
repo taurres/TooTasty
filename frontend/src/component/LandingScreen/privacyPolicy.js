@@ -1,4 +1,3 @@
-import Navbar from "../Navbar/navbar";
 import {Link} from "react-router-dom";
 import React from "react";
 
@@ -7,7 +6,6 @@ const PrivacyPolicy = () => {
         <>
             <div className="">
                 <section className="header">
-                    {Navbar()}
                     <div className="flex">
                         <img className="m-4" alt="webLogo" height="100px" src="../img/center-logo.png"/>
                     </div>

@@ -31,7 +31,7 @@ body {
 }
 .homepage-card-section {
     width: 100%;
-    height: 120vh;
+    height: auto;
     margin: auto;
     text-align: center;
     padding-top: 50px;

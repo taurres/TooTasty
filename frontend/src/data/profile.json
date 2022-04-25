@@ -1,11 +1,10 @@
-{
+
+  {
+  "_id": "1",
   "firstname": "Alice",
   "lastname": "Annunziato",
   "name" : "Alice Annunziato",
+  "role": "customer",
   "bio": "I love eatting!",
-  "location": "Boston, MA",
-  "dateOfBirth": "7/7/1968",
-
-  "followingCount": "312",
-  "followersCount": "180"
+  "location": "Boston, MA"
 }
