@@ -1,8 +1,8 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import connectDB from './util/connectDB.js'
-import { errorHandler, notFound } from './middleware/errorMiddleware.js'
-import userRoute from './route/userRoute.js'
+import connectDB from './utils/connectDB.js'
+import { errorHandler, notFound } from './middlewares/errorMiddleware.js'
+import userRoute from './routes/userRoute.js'
 
 dotenv.config()
 

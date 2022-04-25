@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import expressAsyncHandler from 'express-async-handler'
-import User from '../model/userModel.js'
-import { USER_ROLE_ADMIN, USER_ROLE_OWNER } from '../constant/userConstant.js'
+import User from '../models/userModel.js'
+import { USER_ROLE_ADMIN, USER_ROLE_OWNER } from '../constants/userConstant.js'
 
 // authenticate user by token before getting user profile
 export const authToken = expressAsyncHandler(async (req, res, next) => {

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
-import { USER_ROLE_ADMIN, USER_ROLE_CUSTOMER, USER_ROLE_OWNER } from '../constant/userConstant.js'
+import { USER_ROLE_ADMIN, USER_ROLE_CUSTOMER, USER_ROLE_OWNER } from '../constants/userConstant.js'
 import arrayUniquePlugin from 'mongoose-unique-array'
 
 const userSchema = mongoose.Schema(

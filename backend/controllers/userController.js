@@ -1,10 +1,10 @@
 import expressAsyncHandler from 'express-async-handler'
-import User from '../model/userModel.js'
-import generateToken from '../util/generateToken.js'
-import Restaurant from '../model/restaurantModel.js'
+import User from '../models/userModel.js'
+import generateToken from '../utils/generateToken.js'
+import Restaurant from '../models/restaurantModel.js'
 
 // @desc    register new suer
-// @route   POST /api/users
+// @routes   POST /api/users
 // @access  public
 export const registerUser = expressAsyncHandler(async (req, res) => {
   const { name, email, password, bio, location } = req.body
@@ -38,7 +38,7 @@ export const registerUser = expressAsyncHandler(async (req, res) => {
 })
 
 // @desc    Auth user and get token
-// @route   POST /api/users/login
+// @routes   POST /api/users/login
 // @access  Public
 export const loginUser = expressAsyncHandler(async (req, res) => {
   const { email, password } = req.body
@@ -58,7 +58,7 @@ export const loginUser = expressAsyncHandler(async (req, res) => {
 })
 
 // @desc    Get user profile
-// @route   GET /api/users/profile
+// @routes   GET /api/users/profile
 // @access  Private
 export const getUserProfile = expressAsyncHandler(async (req, res) => {
   // req.user is defined in authMiddleware
@@ -72,7 +72,7 @@ export const getUserProfile = expressAsyncHandler(async (req, res) => {
 })
 
 // @desc    Update user profile
-// @route   PUT /api/users/profile
+// @routes   PUT /api/users/profile
 // @access  Private
 export const updateUserProfile = expressAsyncHandler(async (req, res) => {
   // get user by id
@@ -97,7 +97,7 @@ export const updateUserProfile = expressAsyncHandler(async (req, res) => {
 })
 
 // @desc    Get user profile by id (only basic information)
-// @route   GET /api/users/profile/:id
+// @routes   GET /api/users/profile/:id
 // @access  Public
 export const getUserProfileById = expressAsyncHandler(async (req, res) => {
   // req.user is defined in authMiddleware
@@ -116,7 +116,7 @@ export const getUserProfileById = expressAsyncHandler(async (req, res) => {
 })
 
 // @desc    like restaurant
-// @route   PUT /api/users/restaurant/:id
+// @routes   PUT /api/users/restaurant/:id
 // @access  Private
 export const likeRestaurant = expressAsyncHandler(async (req, res) => {
   // get user by id
@@ -141,7 +141,7 @@ export const likeRestaurant = expressAsyncHandler(async (req, res) => {
 })
 
 // @desc    unlike restaurant
-// @route   DELETE /api/users/restaurant/:id
+// @routes   DELETE /api/users/restaurant/:id
 // @access  Private
 export const unlikeRestaurant = expressAsyncHandler(async (req, res) => {
   // get user by id

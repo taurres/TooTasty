@@ -7,8 +7,8 @@ import {
   likeRestaurant,
   unlikeRestaurant,
   getUserProfileById
-} from '../controller/userController.js'
-import { authToken } from '../middleware/authMiddleware.js'
+} from '../controllers/userController.js'
+import { authToken } from '../middlewares/authMiddleware.js'
 
 const router = express.Router()
 
