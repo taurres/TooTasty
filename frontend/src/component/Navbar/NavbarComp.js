@@ -4,6 +4,7 @@ import {
     BrowserRouter as Router,
     Link
 } from "react-router-dom";
+import "./nav.css";
 
 
 export default class NavbarComp extends Component {
@@ -17,12 +18,13 @@ export default class NavbarComp extends Component {
                             <Nav
                                 className="mr-auto my-2 my-lg-0"
                                 style={{ maxHeight: '100px' }}
+                                navbarScroll
                             >
                                 <Nav.Link as={Link} to="/tootasty/home">Home</Nav.Link>
                                 <Nav.Link as={Link} to="/tootasty/search">Search</Nav.Link>
                                 <Nav.Link as={Link} to="/tootasty/profile">Profile</Nav.Link>
-                                <button type="button" className="btn btn-link-white"><Link className="text-white" to="/tootasty/login">Log In</Link></button>
-                                    <button type="button" className="btn btn-outline-white"><Link className="text-white" to="/tootasty/register">Sign up</Link></button>
+                                <Link className="text-white" to="/tootasty/login"><button className="btn btn-link-white">Log In</button></Link>
+                                <Link className="text-white" to="/tootasty/register"><button className="btn btn-outline-white">Sign up</button></Link>
 
                             </Nav>
                         </Navbar.Collapse>

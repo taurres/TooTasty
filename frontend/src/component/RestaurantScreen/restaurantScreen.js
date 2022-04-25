@@ -24,7 +24,7 @@ const RestaurantScreen = () => {
     return (
         // <Provider store={store}>
         <>
-            <NavSearchBar />
+
             <RestaurantDetail />
             <RestaurantReview />
         </>

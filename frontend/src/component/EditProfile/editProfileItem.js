@@ -79,16 +79,16 @@ const EditProfileItem = ({profile}) => {
                 />
             </div>
 
-            <div className="form-group my-2">
-                <label htmlFor="dateOfBirth" className="form-label mx-3 font-white">Date of birth</label>
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder={profile.dateOfBirth}
-                    value={dateOfBirth}
-                    onChange={(event) => setProfileDateOfBirth(event.target.value)}
-                />
-            </div>
+            {/*<div className="form-group my-2">*/}
+            {/*    <label htmlFor="dateOfBirth" className="form-label mx-3 font-white">Date of birth</label>*/}
+            {/*    <input*/}
+            {/*        type="text"*/}
+            {/*        className="form-control"*/}
+            {/*        placeholder={profile.dateOfBirth}*/}
+            {/*        value={dateOfBirth}*/}
+            {/*        onChange={(event) => setProfileDateOfBirth(event.target.value)}*/}
+            {/*    />*/}
+            {/*</div>*/}
         </form>
 
             <div className="position-relative btn-pos align-self-center my-2 pt-2">

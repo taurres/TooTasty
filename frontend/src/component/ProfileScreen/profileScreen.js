@@ -5,7 +5,7 @@
 // import {Provider} from "react-redux";
 import React, {useState, useEffect}  from "react";
 import {useSelector, useDispatch} from "react-redux";
-import UserProfile from "./user/userProfile";
+import UserProfile from "./userProfile";
 
 // const reducer = combineReducers({
 //     profile: profileReducer,
