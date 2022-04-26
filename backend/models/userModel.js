@@ -9,6 +9,14 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    firstname: {
+      type: String,
+      required: true,
+    },
+    lastname: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
@@ -32,6 +40,7 @@ const userSchema = mongoose.Schema(
     location: {
       type: String,
       required: true,
+      default: 'Boston'
     },
     likedRestaurant: [
       {

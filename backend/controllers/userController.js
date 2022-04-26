@@ -7,7 +7,7 @@ import Restaurant from '../models/restaurantModel.js'
 // @routes   POST /api/users
 // @access  public
 export const registerUser = expressAsyncHandler(async (req, res) => {
-  const { name, email, password, bio, location } = req.body
+  const { firstname, lastname, email, password, location, role } = req.body
   const existUser = await User.findOne({ email })
 
   // check if user exists
@@ -16,13 +16,16 @@ export const registerUser = expressAsyncHandler(async (req, res) => {
     throw new Error('User already exists')
   }
 
+  const name = firstname + ' ' + lastname
   // if not exist, create a new user
   const user = await User.create({
     name,
+    firstname,
+    lastname,
     email,
     password,
-    bio,
     location,
+    role,
   })
 
   // response the new user data with token
