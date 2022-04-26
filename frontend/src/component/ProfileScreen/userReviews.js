@@ -1,10 +1,11 @@
-import RecentReviewedRes from "../HomeScreen/recentReviewedRes";
+import React from 'react'
+import RecentReviewedRes from '../HomeScreen/recentReviewedRes'
 
 const UserReviews = () => {
-  return(
-      <>
-          {RecentReviewedRes()}
-      </>
+  return (
+    <>
+      {RecentReviewedRes()}
+    </>
   )
 }
-export default UserReviews;
+export default UserReviews
