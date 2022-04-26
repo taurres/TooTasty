@@ -1,32 +1,46 @@
-
-import React, {useState} from "react";
-import UserCardEditProfile from "./userCardEditProfile";
-import EditProfileItem from "./editProfileItem";
-import "./editProfile.css";
-import {useSelector} from "react-redux";
-import profile from "../../data/profile.json";
+import React, { useEffect } from 'react'
+import UserCardEditProfile from './userCardEditProfile'
+import EditProfileItem from './editProfileItem'
+import './editProfile.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { getUserProfile } from '../../actions/userActions'
 
 const EditProfile = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-    const profile = useSelector((state) => state.profile);
-    console.log(profile);
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
 
-    return(
-        <>
-            <div>
+  const userProfile = useSelector(state => state.userProfile)
+  const { user } = userProfile
 
-                <section className="header height-auto">
-                    <div className="row">
-                        <div className="col-4">
-                            <UserCardEditProfile profile={profile}/>
-                        </div>
-                        <div className="col-8">
-                            <EditProfileItem profile={profile}/>
-                        </div>
-                    </div>
-                </section>
+
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/tootasty/login')
+    } else if (!user.name) {
+      dispatch(getUserProfile())
+    }
+  }, [dispatch, userInfo, user])
+
+  return (
+    <>
+      <div>
+
+        <section className="header height-auto">
+          <div className="row">
+            <div className="col-4">
+              <UserCardEditProfile profile={user}/>
             </div>
-        </>
-    );
+            <div className="col-8">
+              <EditProfileItem profile={user}/>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  )
 }
-export default EditProfile;
+export default EditProfile

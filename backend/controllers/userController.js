@@ -82,7 +82,9 @@ export const updateUserProfile = expressAsyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
   // update the updated attributes
   if (user) {
-    user.name = req.body.name || user.name
+    user.firstname = req.body.firstname || user.firstname
+    user.lastname = req.body.lastname || user.lastname
+    user.name = user.firstname + ' ' + user.lastname
     user.email = req.body.email || user.email
     if (req.body.password) {
       user.password = req.body.password
@@ -168,6 +170,8 @@ export const unlikeRestaurant = expressAsyncHandler(async (req, res) => {
 const formatUserResponse = (user) => {
   return {
     _id: user._id,
+    firstname: user.firstname,
+    lastname: user.lastname,
     name: user.name,
     email: user.email,
     role: user.role,

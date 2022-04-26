@@ -3,14 +3,20 @@ import { composeWithDevTools } from '@redux-devtools/extension'
 import thunk from 'redux-thunk'
 import reviewReducer from './reducers/reviewReducer'
 import restaurantReducer from './reducers/restaurantReducer'
-import profileReducer from './reducers/profileReducer'
-import { userLoginReducer } from './reducers/userReducer'
+import {
+  userLoginReducer,
+  userProfileReducer,
+  userRegisterReducer,
+  userUpdateProfileReducer
+} from './reducers/userReducer'
 
 const reducer = combineReducers({
   reviews: reviewReducer,
   restaurants: restaurantReducer,
-  profile: profileReducer,
   userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
+  userProfile: userProfileReducer,
+  updateUserProfile: userUpdateProfileReducer,
 })
 
 // get user data from local storage
