@@ -50,10 +50,7 @@ export const loginUser = expressAsyncHandler(async (req, res) => {
 
   // if user exists and password matches, return user data with token
   if (user && (await user.matchPassword(password))) {
-    res.json({
-      ...formatUserResponse(user),
-      token: generateToken(user._id),
-    })
+    res.json(formatUserLoginResponse(user))
   } else {
     res.status(401)
     throw new Error('Invalid email or password')
@@ -126,7 +123,7 @@ export const getUserProfileById = expressAsyncHandler(async (req, res) => {
 export const likeRestaurant = expressAsyncHandler(async (req, res) => {
   // get user by id
   const user = await User.findById(req.user._id)
-  const restaurant = await Restaurant.findById(req.params.id)
+  let restaurant = await Restaurant.findById(req.params.id)
   // update user liked list
   if (user && restaurant) {
     user.likedRestaurant.push({
@@ -135,6 +132,11 @@ export const likeRestaurant = expressAsyncHandler(async (req, res) => {
       restaurant: restaurant._id,
     })
     const updatedUser = await user.save()
+
+    // add restaurant likes
+    restaurant.stats.likes = restaurant.stats.likes + 1
+    await restaurant.save()
+
     res.json(formatUserResponse(updatedUser))
   } else if (!user) {
     res.status(401)
@@ -151,12 +153,17 @@ export const likeRestaurant = expressAsyncHandler(async (req, res) => {
 export const unlikeRestaurant = expressAsyncHandler(async (req, res) => {
   // get user by id
   const user = await User.findById(req.user._id)
-  const restaurant = await Restaurant.findById(req.params.id)
+  let restaurant = await Restaurant.findById(req.params.id)
   // const restaurant = await Restaurant.findById(req.restaurant._id)
   // update user liked list
   if (user && restaurant) {
     user.likedRestaurant = user.likedRestaurant.filter(data => !data.restaurant.equals(restaurant._id))
     const updatedUser = await user.save()
+
+    // add restaurant likes
+    restaurant.stats.likes = restaurant.stats.likes - 1
+    await restaurant.save()
+
     res.json(formatUserResponse(updatedUser))
   } else if (!user) {
     res.status(401)
@@ -182,5 +189,16 @@ const formatUserResponse = (user) => {
       numLiked: user.likedRestaurant ? user.likedRestaurant.length : 0,
     },
     ownedRestaurant: user.ownedRestaurant,
+  }
+}
+
+const formatUserLoginResponse = (user) => {
+  return {
+    _id: user._id,
+    firstname: user.firstname,
+    lastname: user.lastname,
+    name: user.name,
+    email: user.email,
+    token: generateToken(user._id)
   }
 }

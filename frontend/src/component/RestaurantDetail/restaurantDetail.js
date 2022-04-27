@@ -1,33 +1,38 @@
-import RatingStar from "../Rating/ratingStar";
-import RestaurantReview from "../RestaurantReview/restaurantReview";
-import React from "react";
-import {useSelector} from "react-redux";
-import RestaurantInfo from "./restaurantInfo";
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import RestaurantInfo from './restaurantInfo'
+import { useParams } from 'react-router-dom'
+import { listRestaurantDetails } from '../../actions/restaurantActions'
 
 
 const RestaurantDetail = () => {
+  const dispatch = useDispatch()
 
-    const restaurants = useSelector(
-        state => state.restaurants);
+  const restaurantId = useParams().id
 
-    return(
-        <>
-            <section className="header height-auto">
-                <div className="container ps-0 pe-0">
-                    <div className="row">
-                        {
-                            restaurants.map && restaurants.map(restaurant =>
-                            <RestaurantInfo restaurant={restaurant}/>)
-                        }
+  const restaurantDetails = useSelector(state => state.restaurantDetails)
+  const { restaurant } = restaurantDetails
 
-                    </div>
-                </div>
-            </section>
 
-        </>
+  useEffect(() => {
+    if (!restaurant) {
+      dispatch(listRestaurantDetails(restaurantId))
+    }
+  }, [dispatch, restaurantId])
 
-    );
+  return (
+    <>
+      <section className="header height-auto">
+        <div className="container ps-0 pe-0">
+          <div className="row">
+            {restaurant && <RestaurantInfo restaurantInfo={restaurant}/>}
+          </div>
+        </div>
+      </section>
+    </>
+
+  )
 }
 
-export default RestaurantDetail;
+export default RestaurantDetail
 

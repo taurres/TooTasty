@@ -10,7 +10,14 @@ import {
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
   USER_DETAILS_RESET,
-  USER_UPDATE_PROFILE_REQUEST, USER_UPDATE_PROFILE_SUCCESS, USER_UPDATE_PROFILE_FAIL
+  USER_UPDATE_PROFILE_REQUEST,
+  USER_UPDATE_PROFILE_SUCCESS,
+  USER_UPDATE_PROFILE_FAIL,
+  USER_LIKE_RESTAURANT_REQUEST,
+  USER_LIKE_RESTAURANT_SUCCESS,
+  USER_LIKE_RESTAURANT_FAIL,
+  USER_UNLIKE_RESTAURANT_REQUEST,
+  USER_UNLIKE_RESTAURANT_SUCCESS, USER_UNLIKE_RESTAURANT_FAIL
 } from '../constants/userConstants'
 
 export const userRegisterReducer = (state = { user: {} }, action) => {
@@ -63,6 +70,25 @@ export const userUpdateProfileReducer = (state = {}, action) => {
     case USER_UPDATE_PROFILE_SUCCESS:
       return { loading: false, success: true, userInfo: action.payload }
     case USER_UPDATE_PROFILE_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+export const userLikeRestaurantReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_LIKE_RESTAURANT_REQUEST:
+      return { loading: true }
+    case USER_LIKE_RESTAURANT_SUCCESS:
+      return { loading: false, success: true, userInfo: action.payload }
+    case USER_LIKE_RESTAURANT_FAIL:
+      return { loading: false, error: action.payload }
+    case USER_UNLIKE_RESTAURANT_REQUEST:
+      return { loading: true }
+    case USER_UNLIKE_RESTAURANT_SUCCESS:
+      return { loading: false, success: true, userInfo: action.payload }
+    case USER_UNLIKE_RESTAURANT_FAIL:
       return { loading: false, error: action.payload }
     default:
       return state

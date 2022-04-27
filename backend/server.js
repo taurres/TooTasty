@@ -2,7 +2,8 @@ import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './utils/connectDB.js'
 import { errorHandler, notFound } from './middlewares/errorMiddleware.js'
-import userRoute from './routes/userRoute.js'
+import userRoute from './routes/userRoutes.js'
+import restaurantRoutes from './routes/restaurantRoutes.js'
 
 dotenv.config()
 
@@ -16,6 +17,8 @@ app.use(express.json())
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.use('/api/users', userRoute)
+
+app.use('/api/restaurants', restaurantRoutes)
 
 // if goes here, raise not found error
 app.use(notFound)

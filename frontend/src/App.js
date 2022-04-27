@@ -42,7 +42,7 @@ function App() {
               <Route path="register/privacy" element={<PrivacyPolicy/>}/>
               <Route path="home" element={<HomeScreen/>}/>
               <Route path="search" element={<SearchScreen/>}/>
-              <Route path="restaurant" element={<RestaurantScreen/>}/>
+              <Route path="restaurant/:id" element={<RestaurantScreen/>}/>
               <Route path="profile" element={<UserProfile/>}/>
               <Route path="edit" element={<EditProfile/>}/>
             </Route>
