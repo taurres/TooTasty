@@ -1,17 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const FavouriteResElement = ({
-                               restaurant = {
-                                 'name': 'La Royal',
-                                 'address': '221 Concord Ave cambridge, MA 02138 Huron Village',
-                                 'image_url': './img/top-liked-1.jpg',
-                                 'rating': 5.0,
-                                 'liked': 231
-                               }
-                             }) => {
-  // console.log(restaurant);
-
+const FavouriteResElement = ({ restaurant }) => {
+  
   return (
     <>
       <Link to="#">
@@ -22,7 +13,6 @@ const FavouriteResElement = ({
             </div>
             <div className="col-12 col-md-6 ">
               <h2>{restaurant.name}</h2>
-              <p>address: {restaurant.address}</p>
             </div>
           </div>
           <span><p><i className="fa-solid fa-heart"/> {restaurant.liked} likes</p></span>

@@ -22,7 +22,6 @@ const EditProfileItem = ({ profile }) => {
       bio,
       location,
     }
-    console.log(updatedProfile)
     dispatch(updateUserProfile(updatedProfile))
     navigate('/tootasty/profile')
   }
