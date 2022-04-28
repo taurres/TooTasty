@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import { reviewSchema } from './reviewModel.js';
+import mongoose from 'mongoose'
+import { reviewSchema } from './reviewModel.js'
 
 const restaurantSchema = new mongoose.Schema(
   {
@@ -27,8 +27,8 @@ const restaurantSchema = new mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
-const Restaurant = mongoose.model('Restaurant', restaurantSchema);
+const Restaurant = mongoose.model('Restaurant', restaurantSchema)
 
-export default Restaurant;
+export default Restaurant

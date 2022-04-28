@@ -3,7 +3,7 @@
 //     CREAT_REVIEW,
 // }
 //     from "../actions/reviewActions";
-import reviews from '../data/review.json';
+import reviews from '../data/review.json'
 
 export const reviewReducer = (state = reviews, action) => {
   switch (action.type) {
@@ -18,9 +18,9 @@ export const reviewReducer = (state = reviews, action) => {
         firstname: 'Someone',
         lastname: 'Else',
         time: '04/22/2022',
-      };
-      return [newReview, ...state];
+      }
+      return [newReview, ...state]
     default:
-      return state;
+      return state
   }
-};
+}

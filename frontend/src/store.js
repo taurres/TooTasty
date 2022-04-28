@@ -1,19 +1,19 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
-import { composeWithDevTools } from '@redux-devtools/extension';
-import thunk from 'redux-thunk';
-import { reviewReducer } from './reducers/reviewReducer';
+import { applyMiddleware, combineReducers, createStore } from 'redux'
+import { composeWithDevTools } from '@redux-devtools/extension'
+import thunk from 'redux-thunk'
+import { reviewReducer } from './reducers/reviewReducer'
 import {
   restaurantDetailsReducer,
   restaurantListReducer,
   restaurantRencentReviewedReducer,
-} from './reducers/restaurantReducer';
+} from './reducers/restaurantReducer'
 import {
-  userLikerestaurantReducer,
+  userLikeRestaurantReducer,
   userLoginReducer,
   userProfileReducer,
   userRegisterReducer,
   userUpdateProfileReducer,
-} from './reducers/userReducer';
+} from './reducers/userReducer'
 
 const reducer = combineReducers({
   reviews: reviewReducer,
@@ -23,25 +23,25 @@ const reducer = combineReducers({
   userProfile: userProfileReducer,
   updateUserProfile: userUpdateProfileReducer,
   restaurantDetails: restaurantDetailsReducer,
-  likeRestaurant: userLikerestaurantReducer,
+  likeRestaurant: userLikeRestaurantReducer,
   restaurantRecentReviewed: restaurantRencentReviewedReducer,
-});
+})
 
 // get user data from local storage
 const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
-  : null;
+  : null
 
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
-};
+}
 
-const middleware = [thunk];
+const middleware = [thunk]
 
 const store = createStore(
   reducer,
   initialState,
   composeWithDevTools(applyMiddleware(...middleware))
-);
+)
 
-export default store;
+export default store
