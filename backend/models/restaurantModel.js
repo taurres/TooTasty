@@ -4,6 +4,7 @@ import { reviewSchema } from './reviewModel.js'
 const restaurantSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
+    yelp_id: { type: String, default: '' },
     address: { type: String, required: true },
     image_url: { type: String, required: true },
     is_closed: { type: Boolean, required: true },

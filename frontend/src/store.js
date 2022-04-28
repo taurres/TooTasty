@@ -2,7 +2,7 @@ import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { composeWithDevTools } from '@redux-devtools/extension'
 import thunk from 'redux-thunk'
 import reviewReducer from './reducers/reviewReducer'
-import { restaurantDetailsReducer, restaurantReducer } from './reducers/restaurantReducer'
+import { restaurantDetailsReducer, restaurantReducer, saveYelpRestaurantReducer } from './reducers/restaurantReducer'
 import {
   userLikeRestaurantReducer,
   userLoginReducer,
@@ -20,6 +20,7 @@ const reducer = combineReducers({
   updateUserProfile: userUpdateProfileReducer,
   restaurantDetails: restaurantDetailsReducer,
   likeRestaurant: userLikeRestaurantReducer,
+  saveYelpRestaurant: saveYelpRestaurantReducer,
 })
 
 // get user data from local storage

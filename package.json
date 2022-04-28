@@ -26,7 +26,8 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.9",
-    "mongoose-unique-array": "^0.4.2"
+    "mongoose-unique-array": "^0.4.2",
+    "yelp-fusion": "^3.0.0"
   },
   "devDependencies": {
     "concurrently": "^7.1.0",

@@ -1,8 +1,12 @@
 import restaurants from '../data/restaurant.json'
 import {
   RESTAURANT_DETAILS_FAIL,
-  RESTAURANT_DETAILS_REQUEST,
-  RESTAURANT_DETAILS_SUCCESS
+  RESTAURANT_DETAILS_REQUEST, RESTAURANT_DETAILS_RESET,
+  RESTAURANT_DETAILS_SUCCESS,
+  YELP_RESTAURANT_SAVE_FAIL,
+  YELP_RESTAURANT_SAVE_REQUEST,
+  YELP_RESTAURANT_SAVE_RESET,
+  YELP_RESTAURANT_SAVE_SUCCESS
 } from '../constants/restaurantConstants'
 
 export const restaurantReducer = (state = restaurants, action) => {
@@ -33,11 +37,28 @@ export const restaurantReducer = (state = restaurants, action) => {
 export const restaurantDetailsReducer = (state = {}, action) => {
   switch (action.type) {
     case RESTAURANT_DETAILS_REQUEST:
-      return { loading: true, ...state }
+      return { loading: true }
     case RESTAURANT_DETAILS_SUCCESS:
       return { loading: false, restaurant: action.payload }
     case RESTAURANT_DETAILS_FAIL:
       return { loading: false, error: action.payload }
+    case RESTAURANT_DETAILS_RESET:
+      return {}
+    default:
+      return state
+  }
+}
+
+export const saveYelpRestaurantReducer = (state = {}, action) => {
+  switch (action.type) {
+    case YELP_RESTAURANT_SAVE_REQUEST:
+      return { loading: true }
+    case YELP_RESTAURANT_SAVE_SUCCESS:
+      return { loading: false, restaurant: action.payload }
+    case YELP_RESTAURANT_SAVE_FAIL:
+      return { loading: false, error: action.payload }
+    case YELP_RESTAURANT_SAVE_RESET:
+      return {}
     default:
       return state
   }
