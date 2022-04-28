@@ -1,24 +1,25 @@
-import React from 'react'
-import reviews from '../datafornow/reviews.json'
-// import {Link} from "react-router-dom";
-import ReviewElement from './reviewElement'
+import React from 'react';
+import restaurants from '../datafornow/restaurants.json';
+import ReviewElement from './reviewElement';
+import { Row, Col } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 const RecentReviewedRes = () => {
-
   return (
     <>
-      <div className="mt-5 m-3 flex">
-        <h1 className="text-white">You recent reviews</h1>
+      <div className='mt-5 m-3 flex'>
+        <h1 className='text-white'>Restaurants you recent reviewed</h1>
       </div>
 
-      <div className="flex p-2">
-        <ul className="list-group">
-          {reviews.map && reviews.map(review => {
-            return (<ReviewElement review={review}/>)
-          })}
-        </ul>
-      </div>
+      <Row className='justify-content-md-center'>
+        {restaurants &&
+          restaurants.map((restaurant) => (
+            <Col key={restaurant._id} sm={12} md={6} lg={4} xl={3}>
+              <ReviewElement restaurant={restaurant} />
+            </Col>
+          ))}
+      </Row>
     </>
-  )
-}
-export default RecentReviewedRes
+  );
+};
+export default RecentReviewedRes;
