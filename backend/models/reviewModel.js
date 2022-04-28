@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 export const reviewSchema = new mongoose.Schema(
   {
@@ -10,10 +10,15 @@ export const reviewSchema = new mongoose.Schema(
       required: true,
       ref: 'User',
     },
+    restaurant: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Restaurant',
+      required: true,
+    },
   },
   {
     timestamps: true,
   }
-)
+);
 
-export const Review = mongoose.model('Review', reviewSchema)
+export const Review = mongoose.model('Review', reviewSchema);

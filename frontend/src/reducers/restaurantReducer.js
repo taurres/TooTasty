@@ -1,44 +1,53 @@
-import restaurants from '../data/restaurant.json'
 import {
-  RESTAURANT_DETAILS_FAIL,
+  RESTAURANT_LIST_REQUEST,
+  RESTAURANT_LIST_SUCCESS,
+  RESTAURANT_LIST_FAIL,
   RESTAURANT_DETAILS_REQUEST,
-  RESTAURANT_DETAILS_SUCCESS
-} from '../constants/restaurantConstants'
+  RESTAURANT_DETAILS_SUCCESS,
+  RESTAURANT_DETAILS_FAIL,
+  RESTAURANT_RECENT_REVIEWED_REQUEST,
+  RESTAURANT_RECENT_REVIEWED_SUCCESS,
+  RESTAURANT_RECENT_REVIEWED_FAIL,
+} from '../constants/restaurantConstants';
 
-export const restaurantReducer = (state = restaurants, action) => {
+export const restaurantListReducer = (state = { restartants: [] }, action) => {
   switch (action.type) {
-    case 'find-restaurant':
-      return state
-    case 'like-restaurant':
-      return state.map(restaurant => {
-        if (restaurant._id === action.restaurant._id) {
-          if (restaurant.liked === true) {
-            restaurant.liked = false
-            restaurant.stats.numLikes--
-          } else {
-            restaurant.liked = true
-            restaurant.stats.numLikes++
-          }
-          return restaurant
-        } else {
-          return restaurant
-        }
-      })
-
+    case RESTAURANT_LIST_REQUEST:
+      return { loading: true, restartants: [] };
+    case RESTAURANT_LIST_SUCCESS:
+      return { loading: false, restaurants: action.payload };
+    case RESTAURANT_LIST_FAIL:
+      return { loading: false, error: action.payload };
     default:
-      return restaurants
+      return state;
   }
-}
+};
 
 export const restaurantDetailsReducer = (state = {}, action) => {
   switch (action.type) {
     case RESTAURANT_DETAILS_REQUEST:
-      return { loading: true, ...state }
+      return { loading: true, ...state };
     case RESTAURANT_DETAILS_SUCCESS:
-      return { loading: false, restaurant: action.payload }
+      return { loading: false, restaurant: action.payload };
     case RESTAURANT_DETAILS_FAIL:
-      return { loading: false, error: action.payload }
+      return { loading: false, error: action.payload };
     default:
-      return state
+      return state;
   }
-}
+};
+
+export const restaurantRencentReviewedReducer = (
+  state = { restaurants: [] },
+  action
+) => {
+  switch (action.type) {
+    case RESTAURANT_RECENT_REVIEWED_REQUEST:
+      return { loading: true, restaurants: [] };
+    case RESTAURANT_RECENT_REVIEWED_SUCCESS:
+      return { loading: false, restaurants: action.payload };
+    case RESTAURANT_RECENT_REVIEWED_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
