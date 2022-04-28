@@ -6,12 +6,16 @@ const FavouriteRes = ({ restaurants }) => {
   return (
     <>
       <div className="mt-5 m-3 ">
-        <h1 className="text-white">You Liked restaurant</h1>
+        <h1 className="text-white">Your Liked Restaurant</h1>
       </div>
-      <Row className="justify-content-md-center">
+      <Row>
         {restaurants &&
           restaurants.map((restaurant) => (
-            <Col key={restaurant._id} sm={12} md={6} lg={4} xl={3}>
+            <Col
+              key={restaurant._id}
+              sm={12} md={6} lg={4}
+              className="d-flex align-items-stretch"
+            >
               <FavouriteResElement restaurant={restaurant}/>
             </Col>
           ))}

@@ -1,27 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Button, Card } from 'react-bootstrap'
 
 const FavouriteResElement = ({ restaurant }) => {
   return (
-    <>
-      <Link to="#">
-        <li className="text-white d-flex justify-content-between align-items-center">
-          <div className="homepage-list-child row ">
-            <div className="col-12 col-md-6 ">
-              <img src={restaurant.image_url} alt=""/>
-            </div>
-            <div className="col-12 col-md-6 ">
-              <h2>{restaurant.name}</h2>
-            </div>
-          </div>
-          <span>
-            <p>
-              <i className="fa-solid fa-heart"/> {restaurant.liked} likes
-            </p>
-          </span>
-        </li>
+    <Card className="my-2 p-2 border-0 text-center">
+      <Link to={`/tootasty/restaurant/${restaurant.restaurant}`}>
+        <Card.Img variant="top" src={restaurant.image_url} alt=""/>
       </Link>
-    </>
+      <Card.Body>
+        <Card.Title as="h3">{restaurant.name}</Card.Title>
+        <Card.Text>
+          <i className="fa-solid fa-heart"/> {restaurant.liked} likes
+        </Card.Text>
+        <Link to={`/tootasty/restaurant/${restaurant.restaurant}`}>
+          <Button variant="primary">Review Again</Button>
+        </Link>
+      </Card.Body>
+    </Card>
   )
 }
 export default FavouriteResElement
