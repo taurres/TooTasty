@@ -10,6 +10,11 @@ export const reviewSchema = new mongoose.Schema(
       required: true,
       ref: 'User',
     },
+    restaurant: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Restaurant',
+      required: true,
+    },
   },
   {
     timestamps: true,

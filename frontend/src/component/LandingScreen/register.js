@@ -25,7 +25,7 @@ const Register = () => {
 
   // get the user login data from redux store
   const userRegister = useSelector(state => state.userLogin)
-  const { loading, userInfo, error } = userRegister
+  const { userInfo, error } = userRegister
 
   useEffect(() => {
     setFormError('')

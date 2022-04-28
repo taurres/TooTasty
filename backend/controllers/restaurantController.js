@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler' // asyncHandler is a middleware that is used to wrap async functions
 import Restaurant from '../models/restaurantModel.js'
+import { Review } from '../models/reviewModel.js'
 
 // @desc    Fetch all restaurants
 // @route   GET /api/restaurants
@@ -97,7 +98,7 @@ const createRestaurantReview = asyncHandler(async (req, res) => {
   const { rating, comment } = req.body
 
   const restaurant = await Restaurant.findById(req.params.id)
-
+  const reviews = await Review.find({})
   if (restaurant) {
     const alreadyReviewed = restaurant.reviews.find(
       (review) => review.user.toString() === req.user._id.toString()
@@ -113,11 +114,13 @@ const createRestaurantReview = asyncHandler(async (req, res) => {
       rating: Number(rating),
       comment: comment,
       user: req.user._id,
+      restaurant: restaurant._id,
     }
 
     restaurant.reviews.push(review)
+    reviews.push(review) // may be duplicated
 
-    restaurant.numReviews = restaurant.reviews.length
+    restaurant.stats.numReviews = restaurant.reviews.length
     restaurant.rating =
       restaurant.reviews.reduce((acc, curr) => {
         return acc + curr.rating
@@ -135,7 +138,19 @@ const createRestaurantReview = asyncHandler(async (req, res) => {
 // @route   GET /api/restaurants/top
 // @access  Public
 const getTopRestaurants = asyncHandler(async (req, res) => {
-  const restaurants = await Product.find({}).sort({ rating: -1 }).limit(3)
+  const restaurants = await Restaurant.find({}).sort({ rating: -1 }).limit(3)
+
+  res.json(restaurants)
+})
+
+// @desc    Get recent-reviewed restaurants
+// @route   GET /api/restaurants/recent-reviewed
+// @access  Public
+const getRecentReviewedRestaurants = asyncHandler(async (req, res) => {
+  const restaurants = await Review.find({})
+    .sort({ createdAt: -1 })
+    .populate('restaurant')
+    .limit(3)
 
   res.json(restaurants)
 })
@@ -148,4 +163,5 @@ export {
   updateRestaurant,
   createRestaurantReview,
   getTopRestaurants,
+  getRecentReviewedRestaurants,
 }

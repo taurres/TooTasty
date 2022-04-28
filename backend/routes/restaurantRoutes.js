@@ -9,13 +9,20 @@ import {
   updateRestaurant,
   createRestaurantReview,
   getTopRestaurants,
+  getRecentReviewedRestaurants,
 } from '../controllers/restaurantController.js'
-import { authAdmin, authOwner, authToken } from '../middlewares/authMiddleware.js'
+import {
+  authAdmin,
+  authOwner,
+  authToken,
+} from '../middlewares/authMiddleware.js'
 //import { protect, admin } from '../middleware/authMiddleware.js';
 
 //router.route('/').get(getRestaurants).post(protect, admin, createRestaurant);
 //router.route('/:id/reviews').post(protect, createRestaurantReview);
 router.get('/top', getTopRestaurants)
+router.get('/recent-reviewed', getRecentReviewedRestaurants)
+router.route('/:id/reviews').post(createRestaurantReview)
 router
   .route('/:id')
   .get(getRestaurantById)

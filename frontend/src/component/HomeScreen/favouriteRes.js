@@ -1,5 +1,6 @@
 import React from 'react'
 import FavouriteResElement from './favouriteResElement'
+import { Row, Col } from 'react-bootstrap'
 
 const FavouriteRes = ({ restaurants }) => {
   return (
@@ -7,14 +8,14 @@ const FavouriteRes = ({ restaurants }) => {
       <div className="mt-5 m-3 ">
         <h1 className="text-white">You Liked restaurant</h1>
       </div>
-
-      <div className=" p-2">
-        <ul className="list-group">
-          {restaurants && restaurants.map(
-            restaurant => <FavouriteResElement restaurant={restaurant}/>
-          )}
-        </ul>
-      </div>
+      <Row className="justify-content-md-center">
+        {restaurants &&
+          restaurants.map((restaurant) => (
+            <Col key={restaurant._id} sm={12} md={6} lg={4} xl={3}>
+              <FavouriteResElement restaurant={restaurant}/>
+            </Col>
+          ))}
+      </Row>
     </>
   )
 }

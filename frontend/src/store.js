@@ -1,8 +1,13 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { composeWithDevTools } from '@redux-devtools/extension'
 import thunk from 'redux-thunk'
-import reviewReducer from './reducers/reviewReducer'
-import { restaurantDetailsReducer, restaurantReducer, saveYelpRestaurantReducer } from './reducers/restaurantReducer'
+import { reviewReducer } from './reducers/reviewReducer'
+import {
+  restaurantDetailsReducer,
+  restaurantListReducer,
+  restaurantRencentReviewedReducer,
+  saveYelpRestaurantReducer,
+} from './reducers/restaurantReducer'
 import {
   userLikeRestaurantReducer,
   userLoginReducer,
@@ -13,13 +18,14 @@ import {
 
 const reducer = combineReducers({
   reviews: reviewReducer,
-  restaurants: restaurantReducer,
+  restaurantList: restaurantListReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userProfile: userProfileReducer,
   updateUserProfile: userUpdateProfileReducer,
   restaurantDetails: restaurantDetailsReducer,
   likeRestaurant: userLikeRestaurantReducer,
+  restaurantRecentReviewed: restaurantRencentReviewedReducer,
   saveYelpRestaurant: saveYelpRestaurantReducer,
 })
 
