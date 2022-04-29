@@ -1,4 +1,4 @@
-import restaurants from '../data/restaurant.json'
+import restaurants from "../data/restaurant.json"
 import {
   RESTAURANT_LIST_REQUEST,
   RESTAURANT_LIST_SUCCESS,
@@ -6,15 +6,18 @@ import {
   RESTAURANT_DETAILS_REQUEST,
   RESTAURANT_DETAILS_SUCCESS,
   RESTAURANT_DETAILS_FAIL,
+  RESTAURANT_DETAILS_RESET,
   RESTAURANT_RECENT_REVIEWED_REQUEST,
   RESTAURANT_RECENT_REVIEWED_SUCCESS,
   RESTAURANT_RECENT_REVIEWED_FAIL,
-  RESTAURANT_DETAILS_RESET,
-  YELP_RESTAURANT_SAVE_FAIL,
   YELP_RESTAURANT_SAVE_REQUEST,
+  YELP_RESTAURANT_SAVE_SUCCESS,
+  YELP_RESTAURANT_SAVE_FAIL,
   YELP_RESTAURANT_SAVE_RESET,
-  YELP_RESTAURANT_SAVE_SUCCESS
-} from '../constants/restaurantConstants'
+  RESTAURANT_TOP_RATED_REQUEST,
+  RESTAURANT_TOP_RATED_SUCCESS,
+  RESTAURANT_TOP_RATED_FAIL,
+} from "../constants/restaurantConstants"
 
 export const restaurantListReducer = (state = { restartants: [] }, action) => {
   switch (action.type) {
@@ -69,6 +72,22 @@ export const restaurantRencentReviewedReducer = (
     case RESTAURANT_RECENT_REVIEWED_SUCCESS:
       return { loading: false, restaurants: action.payload }
     case RESTAURANT_RECENT_REVIEWED_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+export const restaurantTopRatedReducer = (
+  state = { restaurants: [] },
+  action
+) => {
+  switch (action.type) {
+    case RESTAURANT_TOP_RATED_REQUEST:
+      return { loading: true, restaurants: [] }
+    case RESTAURANT_TOP_RATED_SUCCESS:
+      return { loading: false, restaurants: action.payload }
+    case RESTAURANT_TOP_RATED_FAIL:
       return { loading: false, error: action.payload }
     default:
       return state
