@@ -157,7 +157,7 @@ export const resetSaveYelpRestaurant = () => async (dispatch) => {
   dispatch({ type: YELP_RESTAURANT_SAVE_RESET })
 }
 
-export const listTopRatedRestaurants = () => async (dispatch) => {
+export const listTopLikedRestaurants = () => async (dispatch) => {
   try {
     dispatch({ type: RESTAURANT_TOP_RATED_REQUEST })
 

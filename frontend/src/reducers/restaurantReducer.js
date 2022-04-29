@@ -78,7 +78,7 @@ export const restaurantRencentReviewedReducer = (
   }
 }
 
-export const restaurantTopRatedReducer = (
+export const restaurantTopLikedReducer = (
   state = { restaurants: [] },
   action
 ) => {
