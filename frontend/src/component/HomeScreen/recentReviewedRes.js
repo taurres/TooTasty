@@ -1,9 +1,9 @@
-import React from 'react'
-import restaurants from '../datafornow/restaurants.json'
-import ReviewElement from './reviewElement'
-import { Row, Col } from 'react-bootstrap'
+import React from "react"
+//import restaurants from '../datafornow/restaurants.json'
+import ReviewElement from "./reviewElement"
+import { Row, Col } from "react-bootstrap"
 
-const RecentReviewedRes = () => {
+const RecentReviewedRes = (restaurants) => {
   return (
     <>
       <div className="mt-5 m-3 flex">
@@ -14,7 +14,7 @@ const RecentReviewedRes = () => {
         {restaurants &&
           restaurants.map((restaurant) => (
             <Col key={restaurant._id} sm={12} md={6} lg={4} xl={3}>
-              <ReviewElement restaurant={restaurant}/>
+              <ReviewElement restaurant={restaurant} />
             </Col>
           ))}
       </Row>
