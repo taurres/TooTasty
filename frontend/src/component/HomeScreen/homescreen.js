@@ -1,7 +1,7 @@
-import Searchbar from "../Searchbar/searchbar"
-import TopLikedRes from "../HomeScreen/topLikedRes"
-import RecentReviewedRes from "../HomeScreen/recentReviewedRes"
-import React from "react"
+import Searchbar from '../Searchbar/searchbar'
+import TopLikedRes from '../HomeScreen/topLikedRes'
+import RecentReviewedRes from '../HomeScreen/recentReviewedRes'
+import React from 'react'
 
 const HomeScreen = () => {
   return (
@@ -13,14 +13,14 @@ const HomeScreen = () => {
               className="mt-5"
               alt="webLogo"
               height="100px"
-              src="../img/center-logo.png"
+              src="/img/center-logo.png"
             />
           </div>
-          {Searchbar()}
+          <Searchbar/>
         </section>
 
         <section className="homepage-card-section">
-          {TopLikedRes()}
+          <TopLikedRes/>
           {RecentReviewedRes()}
         </section>
       </div>
