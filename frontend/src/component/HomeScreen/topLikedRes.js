@@ -1,5 +1,4 @@
 import React, { useEffect } from "react"
-//import restaurants from "../datafornow/restaurants.json"
 import TopLikedElement from "./topLikedElement"
 import { Row, Col } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"

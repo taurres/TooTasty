@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react"
+import { Link } from "react-router-dom"
 
 const TopLikedElement = ({ restaurant }) => {
   return (
@@ -13,18 +13,6 @@ const TopLikedElement = ({ restaurant }) => {
               height="190px"
               width="350px"
             />
-
-            {/* <div className="text flex-column align-items-start p-2 col-md-8">
-              <h2>{restaurant.name}</h2>
-              <p>
-                <i className="fa-solid fa-star" />
-                {restaurant.rating}
-              </p>
-              <p>{restaurant.address}</p>
-              <p>
-                <i className="fa-solid fa-heart" /> liked by 99 users
-              </p>
-            </div> */}
             <div>{restaurant.name}</div>
           </div>
         </Link>
