@@ -1,6 +1,6 @@
-import asyncHandler from 'express-async-handler' // asyncHandler is a middleware that is used to wrap async functions
-import Restaurant from '../models/restaurantModel.js'
-import { Review } from '../models/reviewModel.js'
+import asyncHandler from "express-async-handler" // asyncHandler is a middleware that is used to wrap async functions
+import Restaurant from "../models/restaurantModel.js"
+import { Review } from "../models/reviewModel.js"
 
 // @desc    Fetch all restaurants
 // @route   GET /api/restaurants
@@ -26,7 +26,7 @@ const getRestaurantById = asyncHandler(async (req, res) => {
     res.json(restaurant)
   } else {
     res.status(404)
-    throw new Error('Restaurant not found')
+    throw new Error("Restaurant not found")
   }
 })
 
@@ -38,10 +38,10 @@ const deleteRestaurant = asyncHandler(async (req, res) => {
 
   if (restaurant) {
     await restaurant.remove()
-    res.json({ message: 'Restaurant removed' })
+    res.json({ message: "Restaurant removed" })
   } else {
     res.status(404)
-    throw new Error('Restaurant not found')
+    throw new Error("Restaurant not found")
   }
 })
 
@@ -50,10 +50,10 @@ const deleteRestaurant = asyncHandler(async (req, res) => {
 // @access  Private/Owner
 const createRestaurant = asyncHandler(async (req, res) => {
   const restaurant = new Restaurant({
-    name: 'Sample name',
-    address: 'Sample address',
+    name: "Sample name",
+    address: "Sample address",
     user: req.user._id,
-    image_url: '/images/sample.jpg',
+    image_url: "/images/sample.jpg",
     is_closed: false,
     stats: {
       numReviews: 0,
@@ -87,7 +87,7 @@ const updateRestaurant = asyncHandler(async (req, res) => {
     res.json(updatedRestaurant)
   } else {
     res.status(404)
-    throw new Error('Restaurant not found')
+    throw new Error("Restaurant not found")
   }
 })
 
@@ -99,14 +99,14 @@ const createRestaurantReview = asyncHandler(async (req, res) => {
 
   const restaurant = await Restaurant.findById(req.params.id)
   if (restaurant) {
-    const alreadyReviewed = restaurant.reviews.find(
-      (review) => review.user.toString() === req.user._id.toString()
-    )
+    // const alreadyReviewed = restaurant.reviews.find(
+    //   (review) => review.user.toString() === req.user._id.toString()
+    // )
 
-    if (alreadyReviewed) {
-      res.status(400)
-      throw new Error('You have already reviewed this restaurant')
-    }
+    // if (alreadyReviewed) {
+    //   res.status(400)
+    //   throw new Error("You have already reviewed this restaurant")
+    // }
 
     const review = {
       name: req.user.name,
@@ -118,7 +118,7 @@ const createRestaurantReview = asyncHandler(async (req, res) => {
 
     restaurant.reviews.push(review)
 
-    await Review.create(review)
+    // await Review.create(review)
 
     restaurant.stats.numReviews = restaurant.reviews.length
     restaurant.rating =
@@ -127,10 +127,10 @@ const createRestaurantReview = asyncHandler(async (req, res) => {
       }, 0) / restaurant.reviews.length
 
     await restaurant.save()
-    res.status(201).json({ message: 'Review created' })
+    res.status(201).json({ message: "Review created" })
   } else {
     res.status(404)
-    throw new Error('Restaurant not found')
+    throw new Error("Restaurant not found")
   }
 })
 
@@ -149,7 +149,7 @@ const getTopRestaurants = asyncHandler(async (req, res) => {
 const getRecentReviewedRestaurants = asyncHandler(async (req, res) => {
   const restaurants = await Review.find({})
     .sort({ createdAt: -1 })
-    .populate('restaurant')
+    .populate("restaurant")
     .limit(3)
 
   res.json(restaurants)

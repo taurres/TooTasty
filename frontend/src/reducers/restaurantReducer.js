@@ -19,8 +19,9 @@ import {
   YELP_RESTAURANT_SAVE_RESET,
   RESTAURANT_TOP_RATED_REQUEST,
   RESTAURANT_TOP_RATED_SUCCESS,
-  RESTAURANT_TOP_RATED_FAIL, RESTAURANT_RECENT_REVIEWED_RESET,
-} from '../constants/restaurantConstants'
+  RESTAURANT_TOP_RATED_FAIL,
+  RESTAURANT_RECENT_REVIEWED_RESET,
+} from "../constants/restaurantConstants"
 
 export const restaurantListReducer = (state = { restartants: [] }, action) => {
   switch (action.type) {
@@ -104,7 +105,7 @@ export const restaurantCreateReviewReducer = (state = {}, action) => {
     case RESTAURANT_CREATE_REVIEW_REQUEST:
       return { loading: true }
     case RESTAURANT_CREATE_REVIEW_SUCCESS:
-      return { loading: false, review: action.payload }
+      return { loading: false, success: true }
     case RESTAURANT_CREATE_REVIEW_FAIL:
       return { loading: false, error: action.payload }
     case RESTAURANT_CREATE_REVIEW_RESET:
