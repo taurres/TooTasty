@@ -13,7 +13,7 @@ const WriteReview = () => {
   let [rating, setRating] = useState(0)
 
   const dispatch = useDispatch()
-  const reviewHandler = (e) => {
+  const submitReviewHandler = (e) => {
     e.preventDefault()
     dispatch(
       createRestaurantReview(restaurantId, {
@@ -21,6 +21,9 @@ const WriteReview = () => {
         comment,
       })
     )
+    setTimeout(function() {
+      window.location.reload(1)
+    }, 2000)
   }
 
   return (
@@ -55,7 +58,7 @@ const WriteReview = () => {
           <button
             type="submit"
             className="btn btn-primary"
-            onClick={reviewHandler}
+            onClick={submitReviewHandler}
           >
             Send
           </button>
