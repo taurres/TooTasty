@@ -73,7 +73,7 @@ export const createRestaurantReview = (restaurantId, review) => async (
   getState
 ) => {
   try {
-    dispatch({ type: RESTAURANT_RECENT_REVIEWED_REQUEST })
+    dispatch({ type: RESTAURANT_CREATE_REVIEW_REQUEST })
 
     const {
       userLogin: { userInfo },
