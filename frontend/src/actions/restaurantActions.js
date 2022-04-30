@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from 'axios'
 
 import {
   RESTAURANT_DETAILS_REQUEST,
@@ -20,10 +20,10 @@ import {
   RESTAURANT_TOP_RATED_REQUEST,
   RESTAURANT_TOP_RATED_SUCCESS,
   RESTAURANT_TOP_RATED_FAIL,
-} from "../constants/restaurantConstants"
-import { logout } from "./userActions"
+} from '../constants/restaurantConstants'
+import { logout } from './userActions'
 
-export const listRestaurants = (keyword = "", pageNumber = "") => async (
+export const listRestaurants = (keyword = '', pageNumber = '') => async (
   dispatch
 ) => {
   try {
@@ -81,11 +81,11 @@ export const createRestaurantReview = (restaurantId, review) => async (
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-
+    
     await axios.post(`/api/restaurants/${restaurantId}/reviews`, review, config)
 
     dispatch({
@@ -96,7 +96,7 @@ export const createRestaurantReview = (restaurantId, review) => async (
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message
-    if (message === "Not authorized, token failed") {
+    if (message === 'Not authorized, token failed') {
       dispatch(logout())
     }
     dispatch({
@@ -131,7 +131,7 @@ export const saveYelpRestaurant = (restaurant) => async (dispatch) => {
   try {
     // fetching data
     dispatch({ type: YELP_RESTAURANT_SAVE_REQUEST })
-    const { data } = await axios.put("/api/yelp/restaurants", restaurant)
+    const { data } = await axios.put('/api/yelp/restaurants', restaurant)
 
     // fetch success
     dispatch({

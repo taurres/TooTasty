@@ -2,8 +2,13 @@ import Searchbar from '../Searchbar/searchbar'
 import TopLikedRes from '../HomeScreen/topLikedRes'
 import RecentReviewedRes from '../HomeScreen/recentReviewedRes'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const HomeScreen = () => {
+
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
   return (
     <>
       <div>
@@ -21,7 +26,8 @@ const HomeScreen = () => {
 
         <section className="homepage-card-section">
           <TopLikedRes/>
-          {RecentReviewedRes()}
+          {/*{RecentReviewedRes()}*/}
+          {userInfo && <RecentReviewedRes/>}
         </section>
       </div>
     </>

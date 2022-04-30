@@ -19,6 +19,7 @@ import {
   USER_UNLIKE_RESTAURANT_REQUEST,
   USER_UNLIKE_RESTAURANT_SUCCESS, USER_UNLIKE_RESTAURANT_FAIL
 } from '../constants/userConstants'
+import { RESTAURANT_RECENT_REVIEWED_RESET } from '../constants/restaurantConstants'
 
 export const register = (user) => async (dispatch) => {
   try {
@@ -99,6 +100,8 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => (dispatch) => {
   localStorage.removeItem('userInfo')
   dispatch({ type: USER_LOGOUT })
+  dispatch({ type: RESTAURANT_RECENT_REVIEWED_RESET })
+
 }
 
 export const getUserProfile = () => async (dispatch, getState) => {
