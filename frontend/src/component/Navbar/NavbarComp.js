@@ -36,6 +36,11 @@ const NavbarComp = () => {
             <Nav className="ms-auto">
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
+                  {userInfo.role == 'owner' && (
+                    <LinkContainer to={`/tootasty/restaurant/${userInfo.ownedRestaurant}`}>
+                      <NavDropdown.Item>My Restaurant</NavDropdown.Item>
+                    </LinkContainer>
+                  )}
                   <LinkContainer to="/tootasty/profile">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
