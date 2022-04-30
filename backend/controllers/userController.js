@@ -108,6 +108,8 @@ export const getUserProfileById = expressAsyncHandler(async (req, res) => {
     res.json({
       _id: otherUser._id,
       name: otherUser.name,
+      firstname: otherUser.firstname,
+      lastname: otherUser.lastname,
       bio: otherUser.bio,
       location: otherUser.location,
     })

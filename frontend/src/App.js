@@ -14,6 +14,7 @@ import Register from './component/LandingScreen/register'
 import PrivacyPolicy from './component/LandingScreen/privacyPolicy'
 import SearchScreen from './component/SeaechScreen/searchScreen'
 import UserProfile from './component/ProfileScreen/userProfile'
+import OtherUserProfile from './component/ProfileScreen/otherUserProfile'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               <Route path="search/:keyword" element={<SearchScreen/>}/>
               <Route path="search/" element={<SearchScreen/>}/>
               <Route path="restaurant/:id" element={<RestaurantScreen/>}/>
+              <Route path="profile/:id" element={<OtherUserProfile/>}/>
               <Route path="profile" element={<UserProfile/>}/>
               <Route path="edit" element={<EditProfile/>}/>
             </Route>

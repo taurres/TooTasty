@@ -19,6 +19,10 @@ import {
   USER_UNLIKE_RESTAURANT_REQUEST,
   USER_UNLIKE_RESTAURANT_SUCCESS,
   USER_UNLIKE_RESTAURANT_FAIL,
+  OTHER_USER_DETAILS_REQUEST,
+  OTHER_USER_DETAILS_SUCCESS,
+  OTHER_USER_DETAILS_FAIL,
+  OTHER_USER_DETAILS_RESET,
 } from '../constants/userConstants'
 
 export const userRegisterReducer = (state = { user: {} }, action) => {
@@ -58,6 +62,21 @@ export const userProfileReducer = (state = { user: {} }, action) => {
     case USER_DETAILS_FAIL:
       return { loading: false, error: action.payload }
     case USER_DETAILS_RESET:
+      return { user: {} }
+    default:
+      return state
+  }
+}
+
+export const otherUserProfileReducer = (state = { user: {} }, action) => {
+  switch (action.type) {
+    case OTHER_USER_DETAILS_REQUEST:
+      return { ...state, loading: true }
+    case OTHER_USER_DETAILS_SUCCESS:
+      return { loading: false, user: action.payload }
+    case OTHER_USER_DETAILS_FAIL:
+      return { loading: false, error: action.payload }
+    case OTHER_USER_DETAILS_RESET:
       return { user: {} }
     default:
       return state

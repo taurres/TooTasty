@@ -17,7 +17,11 @@ import {
   USER_LIKE_RESTAURANT_SUCCESS,
   USER_LIKE_RESTAURANT_FAIL,
   USER_UNLIKE_RESTAURANT_REQUEST,
-  USER_UNLIKE_RESTAURANT_SUCCESS, USER_UNLIKE_RESTAURANT_FAIL
+  USER_UNLIKE_RESTAURANT_SUCCESS,
+  USER_UNLIKE_RESTAURANT_FAIL,
+  OTHER_USER_DETAILS_REQUEST,
+  OTHER_USER_DETAILS_SUCCESS,
+  OTHER_USER_DETAILS_FAIL
 } from '../constants/userConstants'
 import { RESTAURANT_RECENT_REVIEWED_RESET } from '../constants/restaurantConstants'
 
@@ -133,6 +137,32 @@ export const getUserProfile = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_DETAILS_FAIL,
+      payload: error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    })
+  }
+}
+
+export const getOtherUserProfile = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: OTHER_USER_DETAILS_REQUEST
+    })
+
+    const { data } = await axios.get(
+      `/api/users/profile/${id}`,
+    )
+
+    dispatch({
+      type: OTHER_USER_DETAILS_SUCCESS,
+      payload: data
+    })
+
+
+  } catch (error) {
+    dispatch({
+      type: OTHER_USER_DETAILS_FAIL,
       payload: error.response && error.response.data.message
         ? error.response.data.message
         : error.message

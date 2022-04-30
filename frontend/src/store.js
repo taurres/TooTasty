@@ -10,6 +10,7 @@ import {
   restaurantTopLikedReducer, restaurantCreateReviewReducer,
 } from './reducers/restaurantReducer'
 import {
+  otherUserProfileReducer,
   userLikeRestaurantReducer,
   userLoginReducer,
   userProfileReducer,
@@ -27,6 +28,7 @@ const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userProfile: userProfileReducer,
+  otherUserProfile: otherUserProfileReducer,
   updateUserProfile: userUpdateProfileReducer,
   likeRestaurant: userLikeRestaurantReducer,
   restaurantCreateReview: restaurantCreateReviewReducer,
