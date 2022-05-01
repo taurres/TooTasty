@@ -1,7 +1,6 @@
-import React from "react"
-import ReviewItems from "./reviewItems"
-import WriteReview from "./writeReview"
-import { useSelector, useDispatch } from "react-redux"
+import React from 'react'
+import ReviewItems from './reviewItems'
+import WriteReview from './writeReview'
 
 const RestaurantReview = ({ reviews }) => {
   return (
@@ -15,7 +14,7 @@ const RestaurantReview = ({ reviews }) => {
                 data-bs-toggle="tab"
                 href="#Reviews"
               >
-                Reviews (123)
+                Reviews
               </a>
             </li>
           </ul>
@@ -23,11 +22,11 @@ const RestaurantReview = ({ reviews }) => {
             <div className="tab-pane fade active show" id="Reviews">
               {reviews.map &&
                 reviews.map((review) => (
-                  <ReviewItems key={review._id} review={review} />
+                  <ReviewItems key={review._id} review={review}/>
                 ))}
             </div>
           </div>
-          <WriteReview />
+          <WriteReview/>
         </div>
       </div>
     </div>

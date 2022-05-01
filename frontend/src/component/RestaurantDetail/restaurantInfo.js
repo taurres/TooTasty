@@ -88,7 +88,7 @@ const RestaurantInfo = ({ restaurantInfo }) => {
         </ul>
         <div>
           <a href="#writeReview">
-            <button type="button" className="btn btn-primary">Write Review</button>
+            <button type="button" className="btn btn-primary" disabled={!userInfo}>Write Review</button>
           </a>
 
           <button

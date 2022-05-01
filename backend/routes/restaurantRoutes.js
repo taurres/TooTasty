@@ -1,28 +1,26 @@
-import express from "express"
+import express from 'express'
 
 const router = express.Router()
 import {
-  getRestaurants,
   getRestaurantById,
   deleteRestaurant,
-  createRestaurant,
   updateRestaurant,
   createRestaurantReview,
   getTopRestaurants,
   getRecentReviewedRestaurants,
-} from "../controllers/restaurantController.js"
+  deleteRestaurantReview,
+} from '../controllers/restaurantController.js'
 import {
-  authAdmin,
   authOwner,
   authToken,
-} from "../middlewares/authMiddleware.js"
+} from '../middlewares/authMiddleware.js'
 
-//router.route('/').get(getRestaurants).post(protect, admin, createRestaurant);
-router.get("/top", getTopRestaurants)
-router.get("/recent-reviewed", getRecentReviewedRestaurants)
-router.route("/:id/reviews").post(authToken, createRestaurantReview)
+router.get('/top', getTopRestaurants)
+router.get('/recent-reviewed', getRecentReviewedRestaurants)
+router.route('/:id/reviews/:reviewId').delete(authToken, deleteRestaurantReview)
+router.route('/:id/reviews').post(authToken, createRestaurantReview)
 router
-  .route("/:id")
+  .route('/:id')
   .get(getRestaurantById)
   .delete(authToken, authOwner, deleteRestaurant)
   .put(authToken, authOwner, updateRestaurant)

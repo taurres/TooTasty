@@ -1,43 +1,50 @@
-import React from "react"
-import LetterAvatars from "../Avatar/letterAvatars"
-import RatingStar from "../Rating/ratingStar"
-import { useSelector, useDispatch } from "react-redux"
+import React from 'react'
+import LetterAvatars from '../Avatar/letterAvatars'
+import RatingStar from '../Rating/ratingStar'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-// import {deleteReview} from "../../actions/ReviewActions";
+import { deleteReview } from '../../actions/reviewActions'
 
 const ReviewItems = ({ review }) => {
+  const dispatch = useDispatch()
+
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
-  console.log(userInfo)
+  const deleteHandler = () => {
+    dispatch(deleteReview(review.restaurant, review._id))
+  }
+
   return (
     <>
-      {/* <div className="review-item clearfix">
-        <div className="grid-image-left">
-          <LetterAvatars name={review.firstname + " " + review.lastname} />
-        </div>
+      <div className="review-item clearfix">
+        <Link to={`/tootasty/profile/${review.user}`}>
+          <div className="grid-image-left">
+            <LetterAvatars name={review.name}/>
+          </div>
+        </Link>
 
         <div className="name-heading">
-          <strong>{review.firstname + " " + review.lastname}</strong>
-          <br />
-          <em>{review.time}</em>
-          <i
-            // onClick={() =>
-            // deleteReview(dispatch, review)}
-            className="fas fa-remove fa-pull-right"
-          ></i>
+          <Link to={`/tootasty/profile/${review.user}`}>
+            <strong>{review.name}</strong>
+          </Link>
+          <br/>
+          {userInfo && userInfo.role === 'admin' && (
+            <Link to="#">
+              <i
+                onClick={deleteHandler}
+                className="fas fa-remove fa-pull-right"
+              ></i>
+            </Link>
+          )}
         </div>
       </div>
       <div className="review-item-content">
-        <RatingStar value={review.rating} /> */}
-      <div>
-        {userInfo.role == "admin" && (
-          <i
-            // onClick={() => deleteReview(review._id)}
-            className="fas fa-remove fa-pull-right"
-          ></i>
-        )}
-        <p>{review.comment}</p>
+        <RatingStar value={review.rating}/>
+        <div>
+          <p>{review.comment}</p>
+        </div>
       </div>
     </>
   )
