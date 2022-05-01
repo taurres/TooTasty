@@ -142,3 +142,15 @@
     position: relative;
     bottom:7px;
 }
+
+.non-line{
+    text-decoration: none;
+}
+
+.color-black{
+    color: #1c1c1c;
+}
+
+.display-inline{
+    display: inline;
+}

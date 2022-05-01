@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 export const reviewSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
+    isAnonymous: { type: Boolean, default: false },
     rating: { type: Number, required: true },
     comment: { type: String, required: true },
     user: {

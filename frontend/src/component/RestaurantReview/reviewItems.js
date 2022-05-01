@@ -3,6 +3,7 @@ import LetterAvatars from '../Avatar/letterAvatars'
 import RatingStar from '../Rating/ratingStar'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import Box from '@mui/material/Box';
 
 import { deleteReview } from '../../actions/reviewActions'
 
@@ -18,17 +19,32 @@ const ReviewItems = ({ review }) => {
 
   return (
     <>
+
       <div className="review-item clearfix">
-        <Link to={`/tootasty/profile/${review.user}`}>
+
           <div className="grid-image-left">
-            <LetterAvatars name={review.name}/>
+            {
+              review.isAnonymous?
+                  <LetterAvatars name="Someone Else" isAnonymous={review.isAnonymous}/>
+                  :
+                  <Link to={`/tootasty/profile/${review.user}`} className="non-line">
+                    <LetterAvatars name={review.name}/>
+                  </Link>
+            }
           </div>
-        </Link>
 
         <div className="name-heading">
-          <Link to={`/tootasty/profile/${review.user}`}>
-            <strong>{review.name}</strong>
-          </Link>
+
+            {
+              review.isAnonymous?
+                <strong>Anonymous</strong>
+                :
+                <Link to={`/tootasty/profile/${review.user}`} className="non-line">
+                  <strong className='color-black'>{review.name}</strong>
+                </Link>
+            }
+
+
           <br/>
           {userInfo && userInfo.role === 'admin' && (
             <Link to="#">
@@ -40,8 +56,17 @@ const ReviewItems = ({ review }) => {
           )}
         </div>
       </div>
-      <div className="review-item-content">
-        <RatingStar value={review.rating}/>
+      <div className="review-item-content ">
+          <Box
+              sx={{
+                  width: 300,
+                  display: 'flex',
+                  alignItems: 'center',
+              }}
+          >
+              <RatingStar value={review.rating}/>
+              <Box sx={{ ml: 2 }}>{review.createdAt.split('T')[0]}</Box>
+          </Box>
         <div>
           <p>{review.comment}</p>
         </div>
