@@ -22,7 +22,7 @@ const NavbarComp = () => {
     <header>
       <Navbar bg="primary" variant="dark" expand="lg">
         <Container>
-          <Navbar.Brand>TooTasty</Navbar.Brand>
+          <Nav.Link as={Link} to="/tootasty/home"><Navbar.Brand>TooTasty</Navbar.Brand></Nav.Link>
           <Navbar.Toggle aria-controls="navbarScroll"/>
           <Navbar.Collapse id="navbarScroll">
             <Nav

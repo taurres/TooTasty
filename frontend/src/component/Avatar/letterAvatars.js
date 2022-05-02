@@ -31,15 +31,23 @@ const stringAvatar = (name) => {
     };
 }
 
-const LetterAvatars = ({name}) => {
-    return (
-        <>
-        <Stack direction="row" spacing={2}>
-            <Avatar {...stringAvatar(name)} />
+const LetterAvatars = ({name, isAnonymous}) => {
 
-        </Stack>
+
+    return (isAnonymous ?
+        <>
+            <Stack direction="row" spacing={2}>
+                <Avatar />
+            </Stack>
         </>
-    );
+        :
+        <>
+            <Stack direction="row" spacing={2}>
+                <Avatar {...stringAvatar(name)} />
+            </Stack>
+        </>
+    )
+
 }
 
 export default LetterAvatars;

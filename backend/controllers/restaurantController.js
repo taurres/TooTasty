@@ -95,7 +95,7 @@ const updateRestaurant = asyncHandler(async (req, res) => {
 // @route   POST /api/restaurants/:id/reviews
 // @access  Private/Reviewer
 const createRestaurantReview = asyncHandler(async (req, res) => {
-  const { rating, comment } = req.body
+  const { rating, comment, isAnonymous } = req.body
 
   const restaurant = await Restaurant.findById(req.params.id)
   if (restaurant) {
@@ -106,6 +106,7 @@ const createRestaurantReview = asyncHandler(async (req, res) => {
       comment: comment,
       user: req.user._id,
       restaurant: restaurant._id,
+      isAnonymous: isAnonymous
     }
 
     restaurant.reviews.push(review)

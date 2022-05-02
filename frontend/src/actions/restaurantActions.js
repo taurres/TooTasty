@@ -74,7 +74,7 @@ export const createRestaurantReview = (restaurantId, review) => async (
 ) => {
   try {
     dispatch({ type: RESTAURANT_CREATE_REVIEW_REQUEST })
-
+    console.log(review);
     const {
       userLogin: { userInfo },
     } = getState()
